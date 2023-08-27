@@ -1,17 +1,9 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAsyncCountries } from "../countries/countriesSlice";
-import Spinner from "../../utils/Spinner";
 import { Link } from "react-router-dom";
+import Spinner from "../../utils/Spinner";
+import useCountryHook from "./useCountryHook";
 
 const Country = ({ darkMode }) => {
-  const { countries, isLoading } = useSelector((state) => state.countries);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAsyncCountries());
-  }, [dispatch]);
+  const { countries, isLoading } = useCountryHook();
 
   if (isLoading) {
     return <Spinner />;
