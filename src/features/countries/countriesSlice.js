@@ -28,6 +28,18 @@ export const fetchAsyncCountryByName = createAsyncThunk(
   },
 );
 
+export const fetchAsyncCountryByRegion = createAsyncThunk(
+  "countries/fetchAsyncCountryByRegion",
+  async (searchValue) => {
+    try {
+      const response = await axios.get(baseURL + "/region/" + searchValue);
+      return response.data;
+    } catch (error) {
+      throw Error("Error while fetching country: ", error);
+    }
+  },
+);
+
 const initialState = {
   countries: [],
   isLoading: true,
@@ -42,7 +54,12 @@ const countriesSlice = createSlice({
       state.countries = payload;
       state.isLoading = false;
     },
+
     [fetchAsyncCountryByName.fulfilled]: (state, { payload }) => {
+      state.countries = payload;
+    },
+
+    [fetchAsyncCountryByRegion.fulfilled]: (state, { payload }) => {
       state.countries = payload;
     },
   },

@@ -1,9 +1,15 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { fetchAsyncCountryByName } from "./countriesSlice";
+import {
+  fetchAsyncCountries,
+  fetchAsyncCountryByName,
+  fetchAsyncCountryByRegion,
+} from "./countriesSlice";
 
 const CountriesInputs = () => {
   const countriesInputRef = useRef();
+  const regionInputRef = useRef();
+
   const dispatch = useDispatch();
 
   const searchCountries = () => {
@@ -11,6 +17,13 @@ const CountriesInputs = () => {
     if (searchValue.trim()) {
       dispatch(fetchAsyncCountryByName(searchValue));
     }
+  };
+
+  const selectRegion = () => {
+    const searchValue = regionInputRef.current.value;
+    searchValue === "All"
+      ? dispatch(fetchAsyncCountries())
+      : dispatch(fetchAsyncCountryByRegion(searchValue));
   };
 
   return (
@@ -42,7 +55,11 @@ const CountriesInputs = () => {
         />
       </div>
       <div>
-        <select className="block w-80 rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-500 shadow-md md:w-80">
+        <select
+          className="block w-80 rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-500 shadow-md md:w-80"
+          ref={regionInputRef}
+          onChange={selectRegion}
+        >
           <option>Filter by Region</option>
           <option>All</option>
           <option>Africa</option>
