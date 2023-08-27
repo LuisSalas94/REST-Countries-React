@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { clearCountry, fetchAsyncCountryByCode } from "./countryByCodeSlice";
 import Spinner from "../../utils/Spinner";
+import CountryButton from "./CountryButton";
 
 const CountryDetails = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const CountryDetails = () => {
 
   return (
     <div className="h-screen bg-slate-50">
+      <CountryButton />
       <div className="flex flex-col items-center justify-center gap-14 bg-slate-50 px-10 pt-2 lg:flex-row lg:gap-32">
         <img src={flag} alt={name} className="h-56 md:h-80 lg:h-80" />
         <div className="info">

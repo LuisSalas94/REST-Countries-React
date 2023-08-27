@@ -1,8 +1,22 @@
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { fetchAsyncCountryByName } from "./countriesSlice";
+
 const CountriesInputs = () => {
+  const countriesInputRef = useRef();
+  const dispatch = useDispatch();
+
+  const searchCountries = () => {
+    const searchValue = countriesInputRef.current.value;
+    if (searchValue.trim()) {
+      dispatch(fetchAsyncCountryByName(searchValue));
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center gap-5 md:flex-row justify-between">
+    <div className="flex flex-col items-center justify-between gap-5 md:flex-row">
       <div className="relative">
-        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           {" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +24,7 @@ const CountriesInputs = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-5 h-5 text-gray-400"
+            className="h-5 w-5 text-gray-400"
           >
             <path
               strokeLinecap="round"
@@ -22,11 +36,13 @@ const CountriesInputs = () => {
         <input
           type="text"
           placeholder="Search for a country..."
-          className="w-80 md:w-80 shadow-md border border-gray-300 text-gray-500 block pl-10 p-2.5 text-sm rounded-lg"
+          className="block w-80 rounded-lg border border-gray-300 p-2.5 pl-10 text-sm text-gray-500 shadow-md md:w-80"
+          ref={countriesInputRef}
+          onChange={searchCountries}
         />
       </div>
       <div>
-        <select className="w-80 md:w-80 shadow-md border border-gray-300 text-gray-500 block text-sm rounded-lg bg-white p-3">
+        <select className="block w-80 rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-500 shadow-md md:w-80">
           <option>Filter by Region</option>
           <option>All</option>
           <option>Africa</option>
