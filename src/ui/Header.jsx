@@ -5,7 +5,7 @@ const Header = () => {
     <div className="shadow-2xl bg-white py-6">
       <div className="max-width flex items-center justify-between">
         <Link to="/" className="text-2xl">
-          Where in the world?
+          Where in the World?
         </Link>
         <div className="flex items-center justify-between cursor-pointer">
           <svg
