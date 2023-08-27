@@ -23,7 +23,11 @@ const initialState = {
 const countryByCodeSlice = createSlice({
   name: "countryByCode",
   initialState,
-  reducers: {},
+  reducers: {
+    clearCountry: (state) => {
+      state.country = [];
+    },
+  },
   extraReducers: {
     [fetchAsyncCountryByCode.fulfilled]: (state, { payload }) => {
       state.country = payload;
@@ -31,5 +35,7 @@ const countryByCodeSlice = createSlice({
     },
   },
 });
+
+export const { clearCountry } = countryByCodeSlice.actions;
 
 export default countryByCodeSlice.reducer;
