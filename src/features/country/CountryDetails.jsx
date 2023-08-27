@@ -1,24 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { clearCountry, fetchAsyncCountryByCode } from "./countryByCodeSlice";
 import Spinner from "../../utils/Spinner";
 import CountryButton from "./CountryButton";
+import useCountryDetailsHook from "./useCountryDetailsHook";
 
 const CountryDetails = ({ darkMode }) => {
-  const dispatch = useDispatch();
-  const { alpha3Code } = useParams();
-
-  const { country, isLoading } = useSelector((state) => state.countryByCode);
-
-  useEffect(() => {
-    dispatch(fetchAsyncCountryByCode(alpha3Code));
-    return () => {
-      dispatch(clearCountry());
-    };
-  }, [dispatch, alpha3Code]);
-
   const {
+    isLoading,
     name,
     flag,
     nativeName,
@@ -26,15 +12,11 @@ const CountryDetails = ({ darkMode }) => {
     subregion,
     capital,
     topLevelDomain,
-    currencies,
-    languages,
-    borders,
+    currenciesCountry,
+    languagesCountry,
+    bordersCountry,
     population,
-  } = country;
-
-  const currenciesCountry = currencies?.map((currency) => currency.name) || [];
-  const languagesCountry = languages?.map((language) => language.name) || [];
-  const bordersCountry = borders || [];
+  } = useCountryDetailsHook();
 
   if (isLoading) {
     return <Spinner />;
