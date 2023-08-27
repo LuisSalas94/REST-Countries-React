@@ -5,7 +5,7 @@ import { clearCountry, fetchAsyncCountryByCode } from "./countryByCodeSlice";
 import Spinner from "../../utils/Spinner";
 import CountryButton from "./CountryButton";
 
-const CountryDetails = () => {
+const CountryDetails = ({ darkMode }) => {
   const dispatch = useDispatch();
   const { alpha3Code } = useParams();
 
@@ -41,9 +41,13 @@ const CountryDetails = () => {
   }
 
   return (
-    <div className="h-screen bg-slate-50">
+    <div className={`app h-screen bg-slate-50 ${darkMode ? "darkMode" : ""}`}>
       <CountryButton />
-      <div className="flex flex-col items-center justify-center gap-14 bg-slate-50 px-10 pt-2 lg:flex-row lg:gap-32">
+      <div
+        className={`app flex flex-col items-center justify-center gap-14 bg-slate-50 px-10 pt-2 lg:flex-row lg:gap-32 ${
+          darkMode ? "darkMode" : ""
+        }`}
+      >
         <img src={flag} alt={name} className="h-56 md:h-80 lg:h-80" />
         <div className="info">
           <h1 className="text-3xl font-bold">{name}</h1>
@@ -98,7 +102,11 @@ const CountryDetails = () => {
             <ul className="flex flex-wrap items-center gap-2 pt-3">
               {bordersCountry.map((border) => (
                 <li key={border} className="mt-3">
-                  <span className="rounded border bg-white px-9 py-2 text-xs shadow">
+                  <span
+                    className={`border_country rounded border bg-white px-9 py-2 text-xs shadow ${
+                      darkMode ? "darkMode" : ""
+                    }`}
+                  >
                     <span className="font-extralight">{border}</span>
                   </span>
                 </li>

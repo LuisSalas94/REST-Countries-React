@@ -1,20 +1,27 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ onClick, darkMode }) => {
   return (
-    <div className="shadow-2xl bg-white py-6">
+    <div
+      className={`header bg-white py-6 shadow-2xl ${
+        darkMode ? "darkMode" : ""
+      }`}
+    >
       <div className="max-width flex items-center justify-between">
         <Link to="/" className="text-2xl">
           Where in the World?
         </Link>
-        <div className="flex items-center justify-between cursor-pointer">
+        <div
+          className="flex cursor-pointer items-center justify-between"
+          onClick={onClick}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="h-6 w-6"
           >
             <path
               strokeLinecap="round"

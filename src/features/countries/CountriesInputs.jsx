@@ -6,7 +6,7 @@ import {
   fetchAsyncCountryByRegion,
 } from "./countriesSlice";
 
-const CountriesInputs = () => {
+const CountriesInputs = ({ darkMode }) => {
   const countriesInputRef = useRef();
   const regionInputRef = useRef();
 
@@ -28,7 +28,7 @@ const CountriesInputs = () => {
 
   return (
     <div className="flex flex-col items-center justify-between gap-5 md:flex-row">
-      <div className="relative">
+      <div className={`search_input relative ${darkMode ? "darkMode" : ""}`}>
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           {" "}
           <svg
