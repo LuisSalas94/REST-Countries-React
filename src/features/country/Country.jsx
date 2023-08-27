@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAsyncCountries } from "../countries/countriesSlice";
 import Spinner from "../../utils/Spinner";
+import { Link } from "react-router-dom";
 
 const Country = () => {
   const { countries, isLoading } = useSelector((state) => state.countries);
@@ -20,14 +21,15 @@ const Country = () => {
     <>
       {countries.map((country) => {
         return (
-          <div
+          <Link
+            to={`/${country.alpha3Code}`}
             key={country.alpha2Code}
-            className="mt-5 cursor-pointer w-72 bg-white rounded-lg border border-gray-100 shadow-lg hover:scale-105 transform transition duration-500"
+            className="mt-5 w-72 transform cursor-pointer rounded-lg border border-gray-100 bg-white shadow-lg transition duration-500 hover:scale-105"
           >
             <img
               src={country.flag}
               alt={country.name}
-              className="rounded-t-lg shadow-sm h-44 w-full object-cover"
+              className="h-44 w-full rounded-t-lg object-cover shadow-sm"
             />
             <div className="p-5">
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-700">
@@ -35,20 +37,20 @@ const Country = () => {
               </h5>
               <p className="pt-2">
                 Population:{" "}
-                <span className="text-zinc-400 values">
+                <span className="values text-zinc-400">
                   {country.population}
                 </span>
               </p>
               <p className="py-2">
                 Region:{" "}
-                <span className="text-zinc-400 values">{country.region}</span>
+                <span className="values text-zinc-400">{country.region}</span>
               </p>
               <p className="pb-5">
                 Capital:{" "}
-                <span className="text-zinc-400 values">{country.capital}</span>
+                <span className="values text-zinc-400">{country.capital}</span>
               </p>
             </div>
-          </div>
+          </Link>
         );
       })}
     </>
