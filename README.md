@@ -10,10 +10,11 @@ This React application utilizes the REST Countries API to create an interactive 
 - Tailwind
   
 ## Screenshots 🎞
-![Screenshot_1](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/24ff0671-7276-4016-9e0c-fea91e79bce6)
-![Screenshot_2](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/f2342942-7a07-4138-bce9-2c4ba972f760)
-![Screenshot_3](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/b976212e-890c-4d7f-9b2e-8a18567eabd9)
-![Screenshot_4](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/62f09831-402b-4e00-8077-03509c29f54e)
+![Screenshot_1](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/a7f893e7-de45-4665-9ea3-6786264d0fb7)
+![Screenshot_2](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/e74f0ef2-fdba-4725-a550-2c3573aec1bb)
+![Screenshot_3](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/666f1351-f352-427a-b4a3-ea7f71121a28)
+![Screenshot_4](https://github.com/LuisSalas94/REST-Countries-React/assets/57297709/c8d444ac-e9ab-4926-b1e6-9a0df4f30b67)
+
 
 ## Instructions
 
